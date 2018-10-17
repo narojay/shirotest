@@ -132,6 +132,7 @@
         <property name="loginUrl" value="/login.jsp"/><!-- 登录页面 -->
         <property name="successUrl" value="/index.jsp"/><!-- 登录成功页面 -->
         <property name="unauthorizedUrl" value="/unauthorized.jsp"/><!-- 没有权限的页面 -->
+        <property name="filterChainDefinitionMap" ref="filterChainDefinitionMap"/>
         <!-- The 'filters' property is not necessary since any declared javax.servlet.Filter bean
              defined will be automatically acquired and available via its beanName in chain
              definitions, but you can perform overrides or parent/child consolidated configuration
@@ -150,7 +151,7 @@
              4). logout 登出
              5). roles 角色过滤器
          -->
-        <property name="filterChainDefinitions">
+    <!--   <property name="filterChainDefinitions">
             <value>
                 /login.jsp= anon
                 /shiro/login= anon
@@ -162,7 +163,14 @@
 
                 /** = authc
             </value>
-        </property>
+        </property>-->
+
+
     </bean>
+    <!--配置一个bean 实际上是一个Map 通过实例工厂方法-->
+    <bean id="filterChainDefinitionMap" factory-bean="filterChainDefinitionMapBuilder"
+          factory-method="buildFilterChainDefinitionMap"/>
+
+    <bean id="filterChainDefinitionMapBuilder" class="com.hjsjy.shiro.factory.FilterChainDefinitionMapBuilder"/>
         <bean id="shiroService" class="com.hjsjy.shiro.services.ShiroService"></bean>
 </beans>
