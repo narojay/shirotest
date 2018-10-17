@@ -1,6 +1,8 @@
 package com.hjsjy.shiro.services;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.session.Session;
 
 import java.util.Date;
 
@@ -15,5 +17,10 @@ public class ShiroService {
     @RequiresRoles("admin")
     public void testMethod(){
         System.out.println("time:" + new Date());
+        Session session = SecurityUtils.getSubject().getSession();
+        Object key = session.getAttribute("key");
+        System.out.println("Services Sessionkey"+ key);
+
     }
+
 }

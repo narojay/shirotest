@@ -172,5 +172,5 @@
           factory-method="buildFilterChainDefinitionMap"/>
 
     <bean id="filterChainDefinitionMapBuilder" class="com.hjsjy.shiro.factory.FilterChainDefinitionMapBuilder"/>
-        <bean id="shiroService" class="com.hjsjy.shiro.services.ShiroService"></bean>
+        <bean id="shiroService" class="com.hjsjy.shiro.services.ShiroService"/>
 </beans>

@@ -1,5 +1,6 @@
 package com.hjsjy.shiro.handlers;
 
+
 import com.hjsjy.shiro.services.ShiroService;
 import org.apache.commons.logging.Log;
 import org.apache.shiro.SecurityUtils;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -27,8 +29,10 @@ import java.io.UnsupportedEncodingException;
 public class ShiroHandler {
     @Autowired
     private ShiroService shiroService;
+
     @RequestMapping("/testShiroAnnotaion")
-    public  String testShiroAnnotaion(){
+    public  String testShiroAnnotaion(HttpSession session){
+        session.setAttribute("key","values12345");
         shiroService.testMethod();
         return "redirect:/index.jsp";
     }
