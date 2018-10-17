@@ -68,6 +68,8 @@
     </bean>
 ```
 
+## 授权需要继承 AuthorizingRealm类，并实现 doGetAuthorizationInfo 方法
+AuthorzingRealm 类继承自AuthenticatingRealm，但是没有实现AuthenticatingRealm中的doGetAuthenticationInfo，所以认证和授权只需要继承AuthorzingRealm就可以同时实现两个抽象方法
 fighting！
 
 
